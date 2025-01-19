@@ -4,9 +4,11 @@ from math import prod
 
 import sympy
 
-from pyrope import (
-    Equation, Exercise, Expression, Int, Problem, Rational, Set, String
+from pyrope.nodes.dtype_nodes import (
+    Equation, Expression, GraphicInteraction, Bool, Int, List, Problem, Rational, Set, String
 )
+
+from pyrope.core import Exercise
 
 
 class EquationExample(Exercise):
@@ -191,3 +193,106 @@ class TrivialExample(Exercise):
 
     def scores(self):
         return 100
+
+class HotspotExampleUK(Exercise):
+    '''
+    Example of a Hotspot Interaction
+    '''
+
+    def problem(self):
+        #TODO path should be done dependant on notebook/lab
+        #TODO make sure to use creative common licensed pngs as example
+        background_iframe = {
+            "src":'../tree/media/uk_map.png',
+            "width":400, 
+            "height":600
+        }
+        
+        icon_iframe = {
+            "src":'../tree/media/plane_icon.svg', 
+            "width":25, 
+            "height":25
+        }
+        
+        
+        graphic_ = GraphicInteraction(type='hotspot', background_src=background_iframe, icon_src=icon_iframe, all_coords=["120,305", "200,130", "200,200", "300,350", "310,380", "355,410", "285,460", "230,440", "270,290"])
+        return Problem(
+            '''
+            Select all marked UK airports that have an average of 100+ outgoing flights per day.
+            
+            <<graphic>>
+            ''',
+            graphic=graphic_
+        )
+        
+    #TODO validate all coords in solution are part of input are in solution
+    def the_solution(self):
+        return ["200,130", "200,200", "300,350"]
+    
+    #TODO scores
+
+class HotspotExamplePlants(Exercise):
+    '''
+    Example of a Hotspot Interaction
+    '''
+
+    def problem(self):
+        #TODO path should be done dependant on notebook/lab
+        background_iframe = {
+            "src":'../tree/media/plantcell_map.png',
+            "width":700, 
+            "height":700
+        }
+        
+        icon_iframe = {
+            "src":'../tree/media/exclmark_icon.png', 
+            "width":25, 
+            "height":25
+        }
+        
+        
+        graphic_ = GraphicInteraction(type='hotspot', background_src=background_iframe, icon_src=icon_iframe, all_coords=["250,225", "365,210", "185,251", "335,425", "330,320", "230,360"])
+        return Problem(
+            '''
+            Select all marked cell organelles that have a double membrane.
+            
+            <<graphic>>
+            ''',
+            graphic=graphic_
+        )
+        
+    def the_solution(self):
+        return ["230,360", "250,225", "335,425"]
+
+class HotspotExample3(Exercise):
+    '''
+    Example of a Hotspot Interaction
+    '''
+
+    def problem(self):
+        #TODO path should be done dependant on notebook/lab
+        background_iframe = {
+            "src":'../tree/media/white_square.png',
+            "width":400, 
+            "height":400
+        }
+        
+        icon_iframe = {
+            "src":'../tree/media/exclmark_icon.png', 
+            "width":25, 
+            "height":25
+        }
+        
+        
+        graphic_ = GraphicInteraction(type='hotspot', background_src=background_iframe, icon_src=icon_iframe, all_coords=["10,20", "60,60", "100,100", "200,300", "300,200"])
+        return Problem(
+            '''
+            Mark all POI on the image.
+            
+            <<graphic>>
+            ''',
+            graphic=graphic_
+        )
+    
+    def the_solution(self):
+        return ["60,60", "100,100"]

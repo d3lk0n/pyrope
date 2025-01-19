@@ -79,6 +79,7 @@ class JupyterWidgetFactory:
         return {
             'Checkbox': pyrope_ipywidgets.Checkbox,
             'RadioButtons': pyrope_ipywidgets.RadioButtons,
+            'GraphicalHotspot': pyrope_ipywidgets.GraphicalHotspot,
             'Slider': pyrope_ipywidgets.Slider,
             'Text': pyrope_ipywidgets.Text,
             'TextArea': pyrope_ipywidgets.TextArea,

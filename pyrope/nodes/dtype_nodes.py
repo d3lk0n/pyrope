@@ -5,13 +5,13 @@ import sympy
 
 from pyrope import config
 from pyrope.dtypes import (
-    BoolType, ComplexType, DictType, EquationType, ExpressionType, IntType,
+    BoolType, ComplexType, DictType, EquationType, ExpressionType, IntType, GraphicalInteractionType, 
     LinearExpressionType, ListType, MatrixType, OneOfType, PolynomialType,
     RationalType, RealType, SetType, StringType, TupleType, VectorType
 )
 from pyrope.errors import ValidationError
 from pyrope.nodes.node import Node
-from pyrope.nodes.widgets import Checkbox, Dropdown, RadioButtons, Slider, Text
+from pyrope.nodes.widgets import Checkbox, Dropdown, GraphicalHotspot, RadioButtons, Slider, Text
 
 
 class Problem(Node):
@@ -359,3 +359,18 @@ class Tuple(Node):
 class List(Tuple):
 
     dtype = ListType
+
+#TODO further specify which kind of interaction
+class GraphicInteraction(Node):
+    
+    #TODO return type?
+    
+    dtype = GraphicalInteractionType
+
+    def __init__(self, *, type, background_src, icon_src, all_coords = [], widget=None, **kwargs):
+        self.dtype = self.dtype(background_src=background_src, icon_src=icon_src, **kwargs)
+        if widget is None:
+            #TODO add other types and set parameters to defaults
+            if (type == 'hotspot'):
+                widget = GraphicalHotspot(background_src, icon_src, all_coords)
+        Node.__init__(self, '<<_>>', {'_': widget}, **kwargs)

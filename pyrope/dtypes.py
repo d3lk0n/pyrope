@@ -982,3 +982,40 @@ class VectorType(MatrixType):
                     return 0.0
         else:
             return MatrixType.compare(self, LHS, RHS)
+
+#TODO might need to differantiate between graphical types
+class GraphicalInteractionType(DType):
+    
+    dtype=list
+    
+    #TODO move parameters somewhere else
+    #TODO type first
+    #TODO use defaults
+    def __init__(self, background_src, icon_src, all_coords = [], type=None, **kwargs):
+        DType.__init__(self, **kwargs)
+        if not (type is None): #TODO if not none determine whether its correct
+            pass
+            #raise ValueError('Parameter incorrect.')
+        #TODO set vars here
+        #self.type = type
+        #self.all_coords = all_coords
+        #self.background_img = background_img
+        #self.icon_img = icon_img
+        #TODO set all parameters
+
+    def trivial_value(self):
+        return []
+
+    def dummy_value(self):
+        return ["1,1"]
+
+    #could also use sort
+    def compare(self, LHS:list[str], RHS:list[str]):
+        print("Comparing: " + str(LHS) + " and " + str(RHS))
+        return set(LHS) == set(RHS)
+    
+    #TODO might need to override cast/parse methods, if multiple instances of this type for different QTI
+
+    @property
+    def info(self):
+        return 'a graphical interaction'
