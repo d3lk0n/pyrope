@@ -1,6 +1,6 @@
 
 from pyrope.nodes.widgets import (
-    Checkbox, Dropdown, GraphicalHotspot, RadioButtons, Slider, Text, TextArea
+    Checkbox, Dropdown, GraphicalHotspot, GraphicalSelectPoint, RadioButtons, Slider, Text, TextArea
 )
 from pyrope.nodes.dtype_nodes import (
     Bool, Complex, Dict, ElementwiseComplex, ElementwiseLinearExpression,
@@ -23,6 +23,7 @@ __all__ = [
     'Expression',
     'GraphicInteraction',
     'GraphicalHotspot',
+    'GraphicalSelectPoint',
     'Int',
     'Integer',
     'LinearExpression',

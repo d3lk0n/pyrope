@@ -11,7 +11,7 @@ from pyrope.dtypes import (
 )
 from pyrope.errors import ValidationError
 from pyrope.nodes.node import Node
-from pyrope.nodes.widgets import Checkbox, Dropdown, GraphicalHotspot, RadioButtons, Slider, Text
+from pyrope.nodes.widgets import Checkbox, Dropdown, GraphicalHotspot, GraphicalSelectPoint, RadioButtons, Slider, Text
 
 
 class Problem(Node):
@@ -367,10 +367,17 @@ class GraphicInteraction(Node):
     
     dtype = GraphicalInteractionType
 
-    def __init__(self, *, type, background_src, icon_src, all_coords = [], widget=None, **kwargs):
+    def __init__(self, *, type, background_src, icon_src={}, all_coords = [], widget=None, **kwargs):
         self.dtype = self.dtype(background_src=background_src, icon_src=icon_src, **kwargs)
         if widget is None:
             #TODO add other types and set parameters to defaults
-            if (type == 'hotspot'):
-                widget = GraphicalHotspot(background_src, icon_src, all_coords)
+            match type:
+                case 'hotspot':
+                    widget = GraphicalHotspot(background_src, icon_src, all_coords)
+                case 'select_point':
+                    #TODO rename icon or use default for indication of clicked areas
+                    widget = GraphicalSelectPoint(background_src, icon_src)
+                case _ :
+                    #TODO handle default
+                    return
         Node.__init__(self, '<<_>>', {'_': widget}, **kwargs)

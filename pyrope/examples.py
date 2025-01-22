@@ -194,6 +194,7 @@ class TrivialExample(Exercise):
     def scores(self):
         return 100
 
+#TODO jupyter view collapses on running cell
 class HotspotExampleUK(Exercise):
     '''
     Example of a Hotspot Interaction
@@ -202,20 +203,20 @@ class HotspotExampleUK(Exercise):
     def problem(self):
         #TODO path should be done dependant on notebook/lab
         #TODO make sure to use creative common licensed pngs as example
-        background_iframe = {
+        background = {
             "src":'../tree/media/uk_map.png',
             "width":400, 
             "height":600
         }
         
-        icon_iframe = {
+        icon = {
             "src":'../tree/media/plane_icon.svg', 
             "width":25, 
             "height":25
         }
         
         
-        graphic_ = GraphicInteraction(type='hotspot', background_src=background_iframe, icon_src=icon_iframe, all_coords=["120,305", "200,130", "200,200", "300,350", "310,380", "355,410", "285,460", "230,440", "270,290"])
+        graphic_ = GraphicInteraction(type='hotspot', background_src=background, icon_src=icon, all_coords=["120,305", "200,130", "200,200", "300,350", "310,380", "355,410", "285,460", "230,440", "270,290"])
         return Problem(
             '''
             Select all marked UK airports that have an average of 100+ outgoing flights per day.
@@ -238,20 +239,20 @@ class HotspotExamplePlants(Exercise):
 
     def problem(self):
         #TODO path should be done dependant on notebook/lab
-        background_iframe = {
+        background = {
             "src":'../tree/media/plantcell_map.png',
             "width":700, 
             "height":700
         }
         
-        icon_iframe = {
+        icon = {
             "src":'../tree/media/exclmark_icon.png', 
             "width":25, 
             "height":25
         }
         
         
-        graphic_ = GraphicInteraction(type='hotspot', background_src=background_iframe, icon_src=icon_iframe, all_coords=["250,225", "365,210", "185,251", "335,425", "330,320", "230,360"])
+        graphic_ = GraphicInteraction(type='hotspot', background_src=background, icon_src=icon, all_coords=["250,225", "365,210", "185,251", "335,425", "330,320", "230,360"])
         return Problem(
             '''
             Select all marked cell organelles that have a double membrane.
@@ -271,23 +272,56 @@ class HotspotExample3(Exercise):
 
     def problem(self):
         #TODO path should be done dependant on notebook/lab
-        background_iframe = {
+        background = {
             "src":'../tree/media/white_square.png',
             "width":400, 
             "height":400
         }
         
-        icon_iframe = {
+        icon = {
             "src":'../tree/media/exclmark_icon.png', 
             "width":25, 
             "height":25
         }
         
         
-        graphic_ = GraphicInteraction(type='hotspot', background_src=background_iframe, icon_src=icon_iframe, all_coords=["10,20", "60,60", "100,100", "200,300", "300,200"])
+        graphic_ = GraphicInteraction(type='hotspot', background_src=background, icon_src=icon, all_coords=["10,20", "60,60", "100,100", "200,300", "300,200"])
         return Problem(
             '''
             Mark all POI on the image.
+            
+            <<graphic>>
+            ''',
+            graphic=graphic_
+        )
+    
+    def the_solution(self):
+        return ["60,60", "100,100"]
+    
+class SelectPointExample(Exercise):
+    '''
+    Example of a Select Point Interaction
+    '''
+
+    #TODO also use 'debug' mode to verify areas -> outline
+    def problem(self):
+        background = {
+            "src":'../tree/media/white_square.png',
+            "width":400, 
+            "height":400
+        }
+        
+        icon = {
+            "src":'../tree/media/pin_icon.png', 
+            "width":12, 
+            "height":12
+        }
+        
+        
+        graphic_ = GraphicInteraction(type='select_point', background_src=background, icon_src=icon)
+        return Problem(
+            '''
+            Select all regions.
             
             <<graphic>>
             ''',
