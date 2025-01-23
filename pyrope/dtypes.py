@@ -984,6 +984,14 @@ class VectorType(MatrixType):
             return MatrixType.compare(self, LHS, RHS)
 
 #TODO might need to differantiate between graphical types
+#TODO types: 
+# matching Coordinates -> identifier
+# coordinates within areas
+# coordinates in sequence -> identifier in sequence
+# matching pair coordinates -> pair identifiers
+# matching pair coord,predetermined coord -> pair id,pedet.id
+# coordinates (specific point: center) within area
+# drawing shouldn't have automatic scoring?
 class GraphicalInteractionType(DType):
     
     dtype=list

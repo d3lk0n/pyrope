@@ -203,6 +203,7 @@ class HotspotExampleUK(Exercise):
     def problem(self):
         #TODO path should be done dependant on notebook/lab
         #TODO make sure to use creative common licensed pngs as example
+        
         background = {
             "src":'../tree/media/uk_map.png',
             "width":400, 
@@ -215,8 +216,10 @@ class HotspotExampleUK(Exercise):
             "height":25
         }
         
+        #TODO use id as well -> dict instead of list? 
+        icon_coords = ["120,305", "200,130", "200,200", "300,350", "310,380", "355,410", "285,460", "230,440", "270,290"]
         
-        graphic_ = GraphicInteraction(type='hotspot', background_src=background, icon_src=icon, all_coords=["120,305", "200,130", "200,200", "300,350", "310,380", "355,410", "285,460", "230,440", "270,290"])
+        graphic_ = GraphicInteraction(type='hotspot', background_src=background, icon_src=icon, all_coords=icon_coords)
         return Problem(
             '''
             Select all marked UK airports that have an average of 100+ outgoing flights per day.
@@ -251,8 +254,9 @@ class HotspotExamplePlants(Exercise):
             "height":25
         }
         
+        icon_coords=["250,225", "365,210", "185,251", "335,425", "330,320", "230,360"]
         
-        graphic_ = GraphicInteraction(type='hotspot', background_src=background, icon_src=icon, all_coords=["250,225", "365,210", "185,251", "335,425", "330,320", "230,360"])
+        graphic_ = GraphicInteraction(type='hotspot', background_src=background, icon_src=icon, all_coords=icon_coords)
         return Problem(
             '''
             Select all marked cell organelles that have a double membrane.
@@ -284,8 +288,9 @@ class HotspotExample3(Exercise):
             "height":25
         }
         
+        icon_coords=["10,20", "60,60", "100,100", "200,300", "300,200"]
         
-        graphic_ = GraphicInteraction(type='hotspot', background_src=background, icon_src=icon, all_coords=["10,20", "60,60", "100,100", "200,300", "300,200"])
+        graphic_ = GraphicInteraction(type='hotspot', background_src=background, icon_src=icon, all_coords=icon_coords)
         return Problem(
             '''
             Mark all POI on the image.
@@ -316,7 +321,6 @@ class SelectPointExample(Exercise):
             "width":12, 
             "height":12
         }
-        
         
         graphic_ = GraphicInteraction(type='select_point', background_src=background, icon_src=icon)
         return Problem(

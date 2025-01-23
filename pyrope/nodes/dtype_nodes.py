@@ -368,16 +368,18 @@ class GraphicInteraction(Node):
     dtype = GraphicalInteractionType
 
     def __init__(self, *, type, background_src, icon_src={}, all_coords = [], widget=None, **kwargs):
-        self.dtype = self.dtype(background_src=background_src, icon_src=icon_src, **kwargs)
         if widget is None:
             #TODO add other types and set parameters to defaults
             match type:
                 case 'hotspot':
+                    #TODO use different types e.g. for evaluation
+                    self.dtype = self.dtype(background_src=background_src, icon_src=icon_src, **kwargs)
                     widget = GraphicalHotspot(background_src, icon_src, all_coords)
                 case 'select_point':
+                    self.dtype = self.dtype(background_src=background_src, icon_src=icon_src, **kwargs)
                     #TODO rename icon or use default for indication of clicked areas
                     widget = GraphicalSelectPoint(background_src, icon_src)
                 case _ :
-                    #TODO handle default
+                    #TODO handle default or try to auto match
                     return
         Node.__init__(self, '<<_>>', {'_': widget}, **kwargs)
