@@ -465,3 +465,21 @@ class GraphicalSelectPoint(Widget):
         
         #default-tracked icons could be set here / given as input
         self.value = []
+        
+class GraphicalOrder(Widget):
+    
+    background_src = NotifyingAttribute()
+    icon_src = NotifyingAttribute()
+    all_coords = NotifyingAttribute()
+    
+    value = NotifyingAttribute()
+
+    def __init__(self, background_src, icon_src, all_coords=[], **kwargs):
+        Widget.__init__(self, **kwargs)
+    
+        self.background_src = background_src
+        self.icon_src = icon_src
+        self.all_coords = all_coords
+        
+        #default-tracked icons could be set here / given as input
+        self.value = []

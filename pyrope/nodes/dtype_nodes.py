@@ -11,7 +11,7 @@ from pyrope.dtypes import (
 )
 from pyrope.errors import ValidationError
 from pyrope.nodes.node import Node
-from pyrope.nodes.widgets import Checkbox, Dropdown, GraphicalHotspot, GraphicalSelectPoint, RadioButtons, Slider, Text
+from pyrope.nodes.widgets import Checkbox, Dropdown, GraphicalHotspot, GraphicalSelectPoint, GraphicalOrder, RadioButtons, Slider, Text
 
 
 class Problem(Node):
@@ -379,6 +379,9 @@ class GraphicInteraction(Node):
                     self.dtype = self.dtype(background_src=background_src, icon_src=icon_src, **kwargs)
                     #TODO rename icon or use default for indication of clicked areas
                     widget = GraphicalSelectPoint(background_src, icon_src)
+                case 'order':
+                    self.dtype = self.dtype(background_src=background_src, icon_src=icon_src, **kwargs)
+                    widget = GraphicalOrder(background_src, icon_src, all_coords)
                 case _ :
                     #TODO handle default or try to auto match
                     return

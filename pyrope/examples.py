@@ -303,6 +303,7 @@ class HotspotExample3(Exercise):
     def the_solution(self):
         return ["60,60", "100,100"]
     
+#TODO more fleshed out examples
 class SelectPointExample(Exercise):
     '''
     Example of a Select Point Interaction
@@ -326,6 +327,74 @@ class SelectPointExample(Exercise):
         return Problem(
             '''
             Select all regions.
+            
+            <<graphic>>
+            ''',
+            graphic=graphic_
+        )
+    
+    def the_solution(self):
+        return ["60,60", "100,100"]
+    
+#TODO replace png icons with svgs
+class GraphicOrderExample(Exercise):
+    '''
+    Example of a Order Interaction
+    '''
+
+    def problem(self):
+        background = {
+            "src":'../tree/media/white_square.png',
+            "width":400, 
+            "height":400
+        }
+        
+        icon = {
+            "src":'../tree/media/circle_icon.svg',
+            "width":15, 
+            "height":15
+        }
+        
+        icon_coords=["10,20", "60,60", "100,100", "200,300", "300,200"]
+        
+        graphic_ = GraphicInteraction(type='order', background_src=background, icon_src=icon, all_coords=icon_coords)
+        return Problem(
+            '''
+            Mark the correct order of all POIs.
+            
+            <<graphic>>
+            ''',
+            graphic=graphic_
+        )
+    
+    def the_solution(self):
+        return ["60,60", "100,100"]
+    
+class GraphicOrderExample2(Exercise):
+    '''
+    Example of a Order Interaction using bigger icons
+    '''
+
+    #TODO also use 'debug' mode to verify areas -> outline
+    def problem(self):
+        background = {
+            "src":'../tree/media/white_square.png',
+            "width":400, 
+            "height":400
+        }
+        
+        icon = {
+            "src":'../tree/media/circle_icon.svg',
+            "width":70, 
+            "height":70
+        }
+        
+        icon_coords=["10,20", "60,60", "100,100", "200,300", "300,200"]
+        
+        graphic_ = GraphicInteraction(type='order', background_src=background, icon_src=icon, all_coords=icon_coords)
+        return Problem(
+            '''
+            Mark the correct order of all POIs.
             
             <<graphic>>
             ''',

@@ -992,6 +992,7 @@ class VectorType(MatrixType):
 # matching pair coord,predetermined coord -> pair id,pedet.id
 # coordinates (specific point: center) within area
 # drawing shouldn't have automatic scoring?
+#TODO extend this type
 class GraphicalInteractionType(DType):
     
     dtype=list

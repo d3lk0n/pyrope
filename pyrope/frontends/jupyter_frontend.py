@@ -81,6 +81,7 @@ class JupyterWidgetFactory:
             'RadioButtons': pyrope_ipywidgets.RadioButtons,
             'GraphicalHotspot': pyrope_ipywidgets.GraphicalHotspot,
             'GraphicalSelectPoint': pyrope_ipywidgets.GraphicalSelectPoint,
+            'GraphicalOrder': pyrope_ipywidgets.GraphicalOrder,
             'Slider': pyrope_ipywidgets.Slider,
             'Text': pyrope_ipywidgets.Text,
             'TextArea': pyrope_ipywidgets.TextArea,
