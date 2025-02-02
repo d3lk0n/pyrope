@@ -333,6 +333,7 @@ class SelectPointExample(Exercise):
             graphic=graphic_
         )
     
+    #TODO verify solution by accepting areas
     def the_solution(self):
         return ["60,60", "100,100"]
     
@@ -375,7 +376,6 @@ class GraphicOrderExample2(Exercise):
     Example of a Order Interaction using bigger icons
     '''
 
-    #TODO also use 'debug' mode to verify areas -> outline
     def problem(self):
         background = {
             "src":'../tree/media/white_square.png',
@@ -403,3 +403,38 @@ class GraphicOrderExample2(Exercise):
     
     def the_solution(self):
         return ["60,60", "100,100"]
+    
+class GraphicAssociateExample(Exercise):
+    '''
+    Example of a Associate Interaction
+    '''
+
+    def problem(self):
+        background = {
+            "src":'../tree/media/white_square.png',
+            "width":400, 
+            "height":400
+        }
+        
+        icon = {
+            "src":'../tree/media/circle_icon.svg',
+            "width":40, 
+            "height":40
+        }
+        
+        icon_coords=["10,20", "60,60", "100,100", "200,300", "300,200"]
+        
+        graphic_ = GraphicInteraction(type='associate', background_src=background, icon_src=icon, all_coords=icon_coords)
+        return Problem(
+            '''
+            Mark the correct associations of all POIs.
+            
+            <<graphic>>
+            ''',
+            graphic=graphic_
+        )
+    
+    #TODO verify solution by accepting pairs of coords -> pairs of id
+    #either direction works
+    def the_solution(self):
+        return ["60,60,100,100"]
