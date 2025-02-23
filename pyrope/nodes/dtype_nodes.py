@@ -11,7 +11,7 @@ from pyrope.dtypes import (
 )
 from pyrope.errors import ValidationError
 from pyrope.nodes.node import Node
-from pyrope.nodes.widgets import Checkbox, Dropdown, GraphicalHotspot, GraphicalSelectPoint, GraphicalOrder, GraphicalAssociate, RadioButtons, Slider, Text
+from pyrope.nodes.widgets import Checkbox, Dropdown, GraphicalHotspot, GraphicalSelectPoint, GraphicalOrder, GraphicalAssociate, GraphicalGapMatch, RadioButtons, Slider, Text
 
 
 class Problem(Node):
@@ -385,6 +385,9 @@ class GraphicInteraction(Node):
                 case 'associate':
                     self.dtype = self.dtype(background_src=background_src, icon_src=icon_src, **kwargs)
                     widget = GraphicalAssociate(background_src, icon_src, all_coords)
+                case 'gap_match':
+                    self.dtype = self.dtype(background_src=background_src, icon_src=icon_src, **kwargs)
+                    widget = GraphicalGapMatch(background_src, icon_src, all_coords)
                 case _ :
                     #TODO handle default or try to auto match
                     return

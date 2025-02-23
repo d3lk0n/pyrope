@@ -83,6 +83,7 @@ class JupyterWidgetFactory:
             'GraphicalSelectPoint': pyrope_ipywidgets.GraphicalSelectPoint,
             'GraphicalOrder': pyrope_ipywidgets.GraphicalOrder,
             'GraphicalAssociate': pyrope_ipywidgets.GraphicalAssociate,
+            'GraphicalGapMatch': pyrope_ipywidgets.GraphicalGapMatch,
             'Slider': pyrope_ipywidgets.Slider,
             'Text': pyrope_ipywidgets.Text,
             'TextArea': pyrope_ipywidgets.TextArea,

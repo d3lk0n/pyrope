@@ -10,14 +10,14 @@ from pyrope.nodes.dtype_nodes import (
 
 from pyrope.core import Exercise
 
-
+"""
 class EquationExample(Exercise):
 
     def problem(self):
         return Problem(
-            """
+            '''
             The Pythagorean Theorem reads <<equation>>.
-            """,
+            ''',
             equation=Equation(symbols='a,b,c')
         )
 
@@ -29,16 +29,16 @@ class ExpressionExample(Exercise):
 
     def problem(self):
         return Problem(
-            """
+            '''
             Einstein's most famous formula, relating Energy $E$ and mass $m$
             via the speed of light $c$, reads $E=$<<RHS>>.
-            """,
+            ''',
             RHS=Expression(symbols='m,c')
         )
 
     def the_solution(self):
         return sympy.parse_expr('m*c**2')
-
+"""
 
 class IntExample(Exercise):
 
@@ -85,7 +85,7 @@ class SetExample(Exercise):
     def scores(self, numbers):
         return sum(numbers) == prod(numbers)
 
-
+"""
 class RationalExample(Exercise):
 
     def problem(self):
@@ -177,7 +177,7 @@ class FeedbackExample(Exercise):
             "a daughter."
         )
 
-
+"""
 class TrivialExample(Exercise):
     '''
     For the sake of completeness, let us finish with a trivial example, one
@@ -370,7 +370,6 @@ class GraphicOrderExample(Exercise):
     
     def the_solution(self):
         return ["60,60", "100,100"]
-    
 class GraphicOrderExample2(Exercise):
     '''
     Example of a Order Interaction using bigger icons
@@ -438,3 +437,40 @@ class GraphicAssociateExample(Exercise):
     #either direction works
     def the_solution(self):
         return ["60,60,100,100"]
+    
+class GraphicAssociateExample(Exercise):
+    '''
+    Example of a Associate Interaction
+    '''
+
+    def problem(self):
+        background = {
+            "src":'../tree/media/white_square.png',
+            "width":400, 
+            "height":400
+        }
+        
+        icon = {
+            "src":'../tree/media/exclmark_icon.png',
+            "width":40, 
+            "height":40
+        }
+        
+        icon_coords=["10,20", "60,60", "100,100", "200,300", "300,200"]
+        
+        graphic_ = GraphicInteraction(type='gap_match', background_src=background, icon_src=icon, all_coords=icon_coords)
+        return Problem(
+            '''
+            Mark the correct associations of all POIs.
+            
+            <<graphic>>
+            ''',
+            graphic=graphic_
+        )
+    
+    #TODO verify solution by accepting pairs of coords -> pairs of id
+    #either direction works
+    def the_solution(self):
+        return ["60,60,100,100"]
+
+#TODO examine exceptions -> throw on print
