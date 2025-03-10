@@ -11,7 +11,7 @@ from pyrope.dtypes import (
 )
 from pyrope.errors import ValidationError
 from pyrope.nodes.node import Node
-from pyrope.nodes.widgets import Checkbox, Dropdown, GraphicalHotspot, GraphicalSelectPoint, GraphicalOrder, GraphicalAssociate, GraphicalGapMatch, RadioButtons, Slider, Text
+from pyrope.nodes.widgets import Checkbox, Dropdown, GraphicalHotspot, GraphicalSelectPoint, GraphicalOrder, GraphicalAssociate, GraphicalGapMatch, GraphicalPositionObject, RadioButtons, Slider, Text
 
 
 class Problem(Node):
@@ -361,6 +361,7 @@ class List(Tuple):
     dtype = ListType
 
 #TODO further specify which kind of interaction
+#TODO add docs to specify which types
 class GraphicInteraction(Node):
     
     #TODO return type?
@@ -388,6 +389,9 @@ class GraphicInteraction(Node):
                 case 'gap_match':
                     self.dtype = self.dtype(background_src=background_src, icon_src=icon_src, **kwargs)
                     widget = GraphicalGapMatch(background_src, icon_src, all_coords)
+                case 'position_object':
+                    self.dtype = self.dtype(background_src=background_src, icon_src=icon_src, **kwargs)
+                    widget = GraphicalPositionObject(background_src, icon_src)
                 case _ :
                     #TODO handle default or try to auto match
                     return

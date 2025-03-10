@@ -84,6 +84,7 @@ class JupyterWidgetFactory:
             'GraphicalOrder': pyrope_ipywidgets.GraphicalOrder,
             'GraphicalAssociate': pyrope_ipywidgets.GraphicalAssociate,
             'GraphicalGapMatch': pyrope_ipywidgets.GraphicalGapMatch,
+            'GraphicalPositionObject': pyrope_ipywidgets.GraphicalPositionObject,
             'Slider': pyrope_ipywidgets.Slider,
             'Text': pyrope_ipywidgets.Text,
             'TextArea': pyrope_ipywidgets.TextArea,

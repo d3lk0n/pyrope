@@ -1020,7 +1020,7 @@ class GraphicalInteractionType(DType):
 
     #could also use sort
     def compare(self, LHS:list[str], RHS:list[str]):
-        print("Comparing: " + str(LHS) + " and " + str(RHS))
+        #print("Comparing: " + str(LHS) + " and " + str(RHS))
         return set(LHS) == set(RHS)
     
     #TODO might need to override cast/parse methods, if multiple instances of this type for different QTI
