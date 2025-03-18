@@ -242,6 +242,7 @@ class HotspotExamplePlants(Exercise):
 
     def problem(self):
         #TODO path should be done dependant on notebook/lab
+        #TODO add optional field to show source 
         background = {
             "src":'../tree/media/plantcell_map.png',
             "width":700, 
@@ -269,42 +270,9 @@ class HotspotExamplePlants(Exercise):
     def the_solution(self):
         return ["230,360", "250,225", "335,425"]
 
-class HotspotExample3(Exercise):
-    '''
-    Example of a Hotspot Interaction
-    '''
-
-    def problem(self):
-        #TODO path should be done dependant on notebook/lab
-        background = {
-            "src":'../tree/media/white_square.png',
-            "width":400, 
-            "height":400
-        }
-        
-        icon = {
-            "src":'../tree/media/exclmark_icon.png', 
-            "width":25, 
-            "height":25
-        }
-        
-        icon_coords=["10,20", "60,60", "100,100", "200,300", "300,200"]
-        
-        graphic_ = GraphicInteraction(type='hotspot', background_src=background, icon_src=icon, all_coords=icon_coords)
-        return Problem(
-            '''
-            Mark all POI on the image.
-            
-            <<graphic>>
-            ''',
-            graphic=graphic_
-        )
-    
-    def the_solution(self):
-        return ["60,60", "100,100"]
-    
 #TODO more fleshed out examples
-class SelectPointExample(Exercise):
+class SelectPointExampleAfricaVolcanos(Exercise):
+    #TODO fact check
     '''
     Example of a Select Point Interaction
     '''
@@ -312,21 +280,21 @@ class SelectPointExample(Exercise):
     #TODO also use 'debug' mode to verify areas -> outline
     def problem(self):
         background = {
-            "src":'../tree/media/white_square.png',
-            "width":400, 
-            "height":400
+            "src":'../tree/media/africa_blank_map.png',
+            "width":585, 
+            "height":600
         }
         
         icon = {
             "src":'../tree/media/pin_icon.png', 
-            "width":12, 
-            "height":12
+            "width":20, 
+            "height":20
         }
         
         graphic_ = GraphicInteraction(type='select_point', background_src=background, icon_src=icon)
         return Problem(
             '''
-            Select all regions.
+            Select all regions in africa, in which active volacons reside.
             
             <<graphic>>
             ''',
@@ -338,30 +306,31 @@ class SelectPointExample(Exercise):
         return ["60,60", "100,100"]
     
 #TODO replace png icons with svgs
-class GraphicOrderExample(Exercise):
+class GraphicOrderExampleBinaryTree(Exercise):
     '''
     Example of a Order Interaction
     '''
 
     def problem(self):
+        #img source https://mathcenter.oxford.emory.edu/site/cs171/binarySearchTrees/
         background = {
-            "src":'../tree/media/white_square.png',
-            "width":400, 
-            "height":400
+            "src":'../tree/media/binary_tree_map.png',
+            "width":657, 
+            "height":438
         }
         
         icon = {
-            "src":'../tree/media/circle_icon.svg',
-            "width":15, 
-            "height":15
+            "src":'../tree/media/circle-fill_icon.svg',
+            "width":34, 
+            "height":34
         }
         
-        icon_coords=["10,20", "60,60", "100,100", "200,300", "300,200"]
+        icon_coords=["383,27", "62,293", "223,116"]
         
         graphic_ = GraphicInteraction(type='order', background_src=background, icon_src=icon, all_coords=icon_coords)
         return Problem(
             '''
-            Mark the correct order of all POIs.
+            Flatten the binary tree into a linked list, choose the order of nodes within the resulting list.
             
             <<graphic>>
             ''',
@@ -370,63 +339,32 @@ class GraphicOrderExample(Exercise):
     
     def the_solution(self):
         return ["60,60", "100,100"]
-class GraphicOrderExample2(Exercise):
-    '''
-    Example of a Order Interaction using bigger icons
-    '''
 
-    def problem(self):
-        background = {
-            "src":'../tree/media/white_square.png',
-            "width":400, 
-            "height":400
-        }
-        
-        icon = {
-            "src":'../tree/media/circle_icon.svg',
-            "width":70, 
-            "height":70
-        }
-        
-        icon_coords=["10,20", "60,60", "100,100", "200,300", "300,200"]
-        
-        graphic_ = GraphicInteraction(type='order', background_src=background, icon_src=icon, all_coords=icon_coords)
-        return Problem(
-            '''
-            Mark the correct order of all POIs.
-            
-            <<graphic>>
-            ''',
-            graphic=graphic_
-        )
-    
-    def the_solution(self):
-        return ["60,60", "100,100"]
-    
-class GraphicAssociateExample(Exercise):
+class GraphicAssociateExampleUK(Exercise):
     '''
     Example of a Associate Interaction
     '''
 
     def problem(self):
         background = {
-            "src":'../tree/media/white_square.png',
+            "src":'../tree/media/uk_map.png',
             "width":400, 
-            "height":400
+            "height":600
         }
         
         icon = {
-            "src":'../tree/media/circle_icon.svg',
-            "width":40, 
-            "height":40
+            "src":'../tree/media/plane_icon.svg', 
+            "width":25, 
+            "height":25
         }
         
-        icon_coords=["10,20", "60,60", "100,100", "200,300", "300,200"]
+        #TODO use id as well -> dict instead of list? 
+        icon_coords = ["120,305", "200,130", "200,200", "300,350", "310,380", "355,410", "285,460", "230,440", "270,290"]
         
         graphic_ = GraphicInteraction(type='associate', background_src=background, icon_src=icon, all_coords=icon_coords)
         return Problem(
             '''
-            Mark the correct associations of all POIs.
+            Mark all existing direct flight connections between uk airports.
             
             <<graphic>>
             ''',
@@ -438,9 +376,10 @@ class GraphicAssociateExample(Exercise):
     def the_solution(self):
         return ["60,60,100,100"]
     
-class GraphicAssociateExample(Exercise):
+    
+class GraphicGapMatchExampleTrivial(Exercise):
     '''
-    Example of a Associate Interaction
+    Example of a Gap Match Interaction
     '''
 
     def problem(self):
@@ -461,16 +400,112 @@ class GraphicAssociateExample(Exercise):
         graphic_ = GraphicInteraction(type='gap_match', background_src=background, icon_src=icon, all_coords=icon_coords)
         return Problem(
             '''
-            Mark the correct associations of all POIs.
+            Choose all 
+            Fill the gaps by dragging the icon over the correct ones.
             
             <<graphic>>
             ''',
             graphic=graphic_
         )
     
-    #TODO verify solution by accepting pairs of coords -> pairs of id
-    #either direction works
     def the_solution(self):
-        return ["60,60,100,100"]
+        return ["60,60", "200,300"]
 
-#TODO examine exceptions -> throw on print
+class GraphicGapMatchExampleUK(Exercise):
+    '''
+    Example of a Gap Match Interaction
+    '''
+
+    def problem(self):
+        background = {
+            "src":'../tree/media/uk_map.png',
+            "width":400, 
+            "height":600
+        }
+        
+        icon = {
+            "src":'../tree/media/plane_icon.svg', 
+            "width":25, 
+            "height":25
+        }
+        
+        #TODO use id as well -> dict instead of list? 
+        icon_coords = ["120,305", "200,130", "200,200", "300,350", "310,380", "355,410", "285,460", "230,440", "270,290"]
+        
+        graphic_ = GraphicInteraction(type='gap_match', background_src=background, icon_src=icon, all_coords=icon_coords)
+        return Problem(
+            '''
+            Select all UK airports that have an average of 100+ outgoing flights per day.
+            Fill the gaps by dragging the icon over the correct ones.
+            
+            <<graphic>>
+            ''',
+            graphic=graphic_
+        )
+    
+    def the_solution(self):
+        return ["60,60", "200,300"]
+
+
+class GraphicPositionObjectExample(Exercise):
+    '''
+    Example of a Position Object Interaction
+    '''
+
+    def problem(self):
+        background = {
+            "src":'../tree/media/white_square.png',
+            "width":400, 
+            "height":400
+        }
+        
+        icon = {
+            "src":'../tree/media/exclmark_icon.png',
+            "width":40, 
+            "height":40
+        }
+        
+        graphic_ = GraphicInteraction(type='position_object', background_src=background, icon_src=icon)
+        return Problem(
+            '''
+            Position the object on the right correctly over the image.
+            
+            <<graphic>>
+            ''',
+            graphic=graphic_
+        )
+    
+    def the_solution(self):
+        return ["60,60"]
+    
+class GraphicPositionObjectExampleAfricaVolcanos(Exercise):
+    '''
+    Example of a Position Object Interaction
+    '''
+
+    def problem(self):
+        background = {
+            "src":'../tree/media/africa_blank_map.png',
+            "width":400, 
+            "height":400
+        }
+        
+        icon = {
+            "src":'../tree/media/exclmark_icon.png',
+            "width":22, 
+            "height":22
+        }
+        
+        graphic_ = GraphicInteraction(type='position_object', background_src=background, icon_src=icon)
+        return Problem(
+            '''
+            Choose all regions that contain an active volacno in africa.
+            Position the object on the right correctly over the image.
+            
+            <<graphic>>
+            ''',
+            graphic=graphic_
+        )
+    
+    def the_solution(self):
+        return ["60,60"]
