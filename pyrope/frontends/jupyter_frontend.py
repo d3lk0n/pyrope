@@ -3,7 +3,7 @@ from IPython.display import display
 import pyrope_ipywidgets
 
 
-from pyrope.messages import (
+from pyrope_ipywidgets.messages_pyrope import (
     ChangeWidgetAttribute, CreateWidget, ExerciseAttribute, RenderTemplate,
     WaitingForSubmission, WidgetValidationError
 )

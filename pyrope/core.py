@@ -26,7 +26,7 @@ from pyrope.database import (
     Exercise as DBExercise, Result, Session as DBSession, User
 )
 from pyrope.errors import IllPosedError
-from pyrope.messages import (
+from pyrope_ipywidgets.messages_pyrope import (
     ChangeWidgetAttribute, CreateWidget, ExerciseAttribute, RenderTemplate,
     Submit, WaitingForSubmission
 )
@@ -375,6 +375,8 @@ class ParametrizedExercise:
     @property
     def solution(self):
         # trigger solutions via getter
+        #TODO currently solutions are being fetched on init, 
+        # could be instantly used when clicking button
         self.the_solution
         self.a_solution
         return {

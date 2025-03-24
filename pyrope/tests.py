@@ -6,7 +6,7 @@ import unittest
 import matplotlib.pyplot as plt
 
 from pyrope import config, core, nodes
-from pyrope.formatters import TemplateFormatter
+from pyrope_ipywidgets.formatters_pyrope import TemplateFormatter
 
 
 class TestExercise(unittest.TestCase):

@@ -5,8 +5,8 @@ from uuid import uuid4
 
 from pyrope.dtypes import TypeChecked
 from pyrope.errors import ValidationError
-from pyrope.formatters import TemplateFormatter
-from pyrope.messages import WidgetValidationError
+from pyrope_ipywidgets.formatters_pyrope import TemplateFormatter
+from pyrope_ipywidgets.messages_pyrope import WidgetValidationError
 
 
 class Node:

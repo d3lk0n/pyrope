@@ -6,7 +6,7 @@ import numpy
 
 from pyrope.config import process_score
 from pyrope.errors import IllPosedError, ValidationError
-from pyrope.messages import ChangeWidgetAttribute
+from pyrope_ipywidgets.messages_pyrope import ChangeWidgetAttribute
 from pyrope.nodes.node import Node
 
 
@@ -437,8 +437,6 @@ class GraphicalHotspot(Widget):
     background_src = NotifyingAttribute()
     icon_src = NotifyingAttribute()
     all_coords = NotifyingAttribute()
-    
-    value = NotifyingAttribute()
 
     def __init__(self, background_src, icon_src, all_coords=[], **kwargs):
         Widget.__init__(self, **kwargs)
@@ -447,42 +445,29 @@ class GraphicalHotspot(Widget):
         self.icon_src = icon_src
         self.all_coords = all_coords
         
-        #default-tracked icons could be set here / given as input
-        self.value = []
-        
 class GraphicalSelectPoint(Widget):
     
     background_src = NotifyingAttribute()
     icon_src = NotifyingAttribute()
-    
-    value = NotifyingAttribute()
 
     def __init__(self, background_src, icon_src, **kwargs):
         Widget.__init__(self, **kwargs)
     
         self.background_src = background_src
         self.icon_src = icon_src
-        
-        #default-tracked icons could be set here / given as input
-        self.value = []
-        
+
 class GraphicalOrder(Widget):
     
     background_src = NotifyingAttribute()
     icon_src = NotifyingAttribute()
     all_coords = NotifyingAttribute()
     
-    value = NotifyingAttribute()
-
     def __init__(self, background_src, icon_src, all_coords=[], **kwargs):
         Widget.__init__(self, **kwargs)
     
         self.background_src = background_src
         self.icon_src = icon_src
-        self.all_coords = all_coords
-        
-        #default-tracked icons could be set here / given as input
-        self.value = []
+        self.all_coords = all_coords        
         
 class GraphicalAssociate(Widget):
     
@@ -498,10 +483,7 @@ class GraphicalAssociate(Widget):
         self.background_src = background_src
         self.icon_src = icon_src
         self.all_coords = all_coords
-        
-        #default-tracked icon pairs could be set here / given as input
-        self.value = []
-        
+
 class GraphicalGapMatch(Widget):
     
     background_src = NotifyingAttribute()
@@ -516,10 +498,7 @@ class GraphicalGapMatch(Widget):
         self.background_src = background_src
         self.icon_src = icon_src
         self.all_coords = all_coords
-        
-        #default-tracked icons could be set here / given as input
-        self.value = []
-        
+
 class GraphicalPositionObject(Widget):
     
     background_src = NotifyingAttribute()
@@ -532,6 +511,3 @@ class GraphicalPositionObject(Widget):
     
         self.background_src = background_src
         self.icon_src = icon_src
-
-        #default-tracked position could be set here / given as input
-        self.value = []
