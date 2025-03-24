@@ -474,8 +474,6 @@ class GraphicalAssociate(Widget):
     background_src = NotifyingAttribute()
     icon_src = NotifyingAttribute()
     all_coords = NotifyingAttribute()
-    
-    value = NotifyingAttribute()
 
     def __init__(self, background_src, icon_src, all_coords=[], **kwargs):
         Widget.__init__(self, **kwargs)
@@ -490,8 +488,6 @@ class GraphicalGapMatch(Widget):
     icon_src = NotifyingAttribute()
     all_coords = NotifyingAttribute()
     
-    value = NotifyingAttribute()
-
     def __init__(self, background_src, icon_src, all_coords=[], **kwargs):
         Widget.__init__(self, **kwargs)
     
@@ -504,8 +500,6 @@ class GraphicalPositionObject(Widget):
     background_src = NotifyingAttribute()
     icon_src = NotifyingAttribute()
     
-    value = NotifyingAttribute()
-
     def __init__(self, background_src, icon_src, **kwargs):
         Widget.__init__(self, **kwargs)
     
