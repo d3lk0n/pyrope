@@ -301,9 +301,8 @@ class SelectPointExampleAfricaVolcanos(Exercise):
             graphic=graphic_
         )
     
-    #TODO verify solution by accepting areas
     def the_solution(self):
-        return ["60,60", "100,100"]
+        return ["60,60,100,100", "250,190,350,290"]
     
 #TODO replace png icons with svgs
 class GraphicOrderExampleBinaryTree(Exercise):
@@ -338,7 +337,7 @@ class GraphicOrderExampleBinaryTree(Exercise):
         )
     
     def the_solution(self):
-        return ["60,60", "100,100"]
+        return ["383,27", "223,116", "62,293"]
 
 class GraphicAssociateExampleUK(Exercise):
     '''
@@ -374,42 +373,8 @@ class GraphicAssociateExampleUK(Exercise):
     #TODO verify solution by accepting pairs of coords -> pairs of id
     #either direction works
     def the_solution(self):
-        return ["60,60,100,100"]
+        return ["120,305,200,130", "310,380,355,410"]
     
-    
-class GraphicGapMatchExampleTrivial(Exercise):
-    '''
-    Example of a Gap Match Interaction
-    '''
-
-    def problem(self):
-        background = {
-            "src":'../tree/media/white_square.png',
-            "width":400, 
-            "height":400
-        }
-        
-        icon = {
-            "src":'../tree/media/exclmark_icon.png',
-            "width":40, 
-            "height":40
-        }
-        
-        icon_coords=["10,20", "60,60", "100,100", "200,300", "300,200"]
-        
-        graphic_ = GraphicInteraction(type='gap_match', background_src=background, icon_src=icon, all_coords=icon_coords)
-        return Problem(
-            '''
-            Choose all 
-            Fill the gaps by dragging the icon over the correct ones.
-            
-            <<graphic>>
-            ''',
-            graphic=graphic_
-        )
-    
-    def the_solution(self):
-        return ["60,60", "200,300"]
 
 class GraphicGapMatchExampleUK(Exercise):
     '''
@@ -444,39 +409,8 @@ class GraphicGapMatchExampleUK(Exercise):
         )
     
     def the_solution(self):
-        return ["60,60", "200,300"]
+        return ["200,200", "300,350", "310,380"]
 
-
-class GraphicPositionObjectExample(Exercise):
-    '''
-    Example of a Position Object Interaction
-    '''
-
-    def problem(self):
-        background = {
-            "src":'../tree/media/white_square.png',
-            "width":400, 
-            "height":400
-        }
-        
-        icon = {
-            "src":'../tree/media/exclmark_icon.png',
-            "width":40, 
-            "height":40
-        }
-        
-        graphic_ = GraphicInteraction(type='position_object', background_src=background, icon_src=icon)
-        return Problem(
-            '''
-            Position the object on the right correctly over the image.
-            
-            <<graphic>>
-            ''',
-            graphic=graphic_
-        )
-    
-    def the_solution(self):
-        return ["60,60"]
     
 class GraphicPositionObjectExampleAfricaVolcanos(Exercise):
     '''
@@ -508,4 +442,4 @@ class GraphicPositionObjectExampleAfricaVolcanos(Exercise):
         )
     
     def the_solution(self):
-        return ["60,60"]
+        return ["60,60,70,70"]

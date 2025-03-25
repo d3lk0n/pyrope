@@ -360,39 +360,32 @@ class List(Tuple):
 
     dtype = ListType
 
-#TODO further specify which kind of interaction
 #TODO add docs to specify which types
 class GraphicInteraction(Node):
-    
-    #TODO return type?
-    
+        
     dtype = GraphicalInteractionType
 
     def __init__(self, *, type, background_src, icon_src={}, all_coords = [], widget=None, **kwargs):
         if widget is None:
-            #TODO add other types and set parameters to defaults
             match type:
                 case 'hotspot':
-                    #TODO use different types e.g. for evaluation
-                    self.dtype = self.dtype(background_src=background_src, icon_src=icon_src, **kwargs)
+                    self.dtype = self.dtype(mode='set', **kwargs)
                     widget = GraphicalHotspot(background_src, icon_src, all_coords)
                 case 'select_point':
-                    self.dtype = self.dtype(background_src=background_src, icon_src=icon_src, **kwargs)
-                    #TODO rename icon or use default for indication of clicked areas
+                    self.dtype = self.dtype(mode='area', **kwargs)
                     widget = GraphicalSelectPoint(background_src, icon_src)
                 case 'order':
-                    self.dtype = self.dtype(background_src=background_src, icon_src=icon_src, **kwargs)
+                    self.dtype = self.dtype(mode='list', **kwargs)
                     widget = GraphicalOrder(background_src, icon_src, all_coords)
                 case 'associate':
-                    self.dtype = self.dtype(background_src=background_src, icon_src=icon_src, **kwargs)
+                    self.dtype = self.dtype(mode='reversible_set', **kwargs)
                     widget = GraphicalAssociate(background_src, icon_src, all_coords)
                 case 'gap_match':
-                    self.dtype = self.dtype(background_src=background_src, icon_src=icon_src, **kwargs)
+                    self.dtype = self.dtype(mode='set', **kwargs)
                     widget = GraphicalGapMatch(background_src, icon_src, all_coords)
                 case 'position_object':
-                    self.dtype = self.dtype(background_src=background_src, icon_src=icon_src, **kwargs)
+                    self.dtype = self.dtype(mode='area', **kwargs)
                     widget = GraphicalPositionObject(background_src, icon_src)
                 case _ :
-                    #TODO handle default or try to auto match
-                    return
+                    raise ValueError("'type' has to be one of 'hotspot', 'select_point', 'order', 'associate', 'gap_match' or 'position_object'")
         Node.__init__(self, '<<_>>', {'_': widget}, **kwargs)
