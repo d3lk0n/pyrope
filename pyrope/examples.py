@@ -194,7 +194,6 @@ class TrivialExample(Exercise):
     def scores(self):
         return 100
 
-#TODO jupyter view collapses on running cell
 class HotspotExampleUK(Exercise):
     '''
     Example of a Hotspot Interaction
@@ -268,7 +267,6 @@ class SelectPointExampleAfricaVolcanos(Exercise):
     Example of a Select Point Interaction
     '''
 
-    #TODO also use 'debug' mode to verify areas -> outline
     def problem(self):
         background = {
             "src":'../tree/media/africa_blank_map.png',

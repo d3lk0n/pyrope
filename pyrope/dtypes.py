@@ -1017,20 +1017,6 @@ class GraphicalInteractionType(DType):
                 raise ValueError(
                 "'mode' must be any of 'set', 'area', 'list' or 'reversible_set'."
             )
-        
-    #TODO might not be needed            
-    def parse(self, value):
-        try:
-            value = value
-        except ValueError:
-            raise ValidationError(
-                f"Cannot convert '{value}' to an integer."
-            )
-        return value
-    
-    #TODO might not be needed
-    def cast(self, value):
-        return value
 
     @property
     def info(self):
