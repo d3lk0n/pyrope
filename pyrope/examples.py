@@ -201,9 +201,6 @@ class HotspotExampleUK(Exercise):
     '''
 
     def problem(self):
-        #TODO path should be done dependant on notebook/lab
-        #TODO make sure to use creative common licensed pngs as example
-        
         background = {
             "src":'../tree/media/uk_map.png',
             "width":400, 
@@ -216,7 +213,6 @@ class HotspotExampleUK(Exercise):
             "height":25
         }
         
-        #TODO use id as well -> dict instead of list? 
         icon_coords = ["120,305", "200,130", "200,200", "300,350", "310,380", "355,410", "285,460", "230,440", "270,290"]
         
         graphic_ = GraphicInteraction(type='hotspot', background_src=background, icon_src=icon, all_coords=icon_coords)
@@ -229,11 +225,9 @@ class HotspotExampleUK(Exercise):
             graphic=graphic_
         )
         
-    #TODO validate all coords in solution are part of input are in solution
     def the_solution(self):
         return ["200,130", "200,200", "300,350"]
     
-    #TODO scores
 
 class HotspotExamplePlants(Exercise):
     '''
@@ -241,8 +235,6 @@ class HotspotExamplePlants(Exercise):
     '''
 
     def problem(self):
-        #TODO path should be done dependant on notebook/lab
-        #TODO add optional field to show source 
         background = {
             "src":'../tree/media/plantcell_map.png',
             "width":700, 
@@ -250,7 +242,7 @@ class HotspotExamplePlants(Exercise):
         }
         
         icon = {
-            "src":'../tree/media/exclmark_icon.png', 
+            "src":'../tree/media/exclamation-circle.svg', 
             "width":25, 
             "height":25
         }
@@ -272,7 +264,6 @@ class HotspotExamplePlants(Exercise):
 
 #TODO more fleshed out examples
 class SelectPointExampleAfricaVolcanos(Exercise):
-    #TODO fact check
     '''
     Example of a Select Point Interaction
     '''
@@ -286,7 +277,7 @@ class SelectPointExampleAfricaVolcanos(Exercise):
         }
         
         icon = {
-            "src":'../tree/media/pin_icon.png', 
+            "src":'../tree/media/geo-alt-fill.svg', 
             "width":20, 
             "height":20
         }
@@ -304,7 +295,6 @@ class SelectPointExampleAfricaVolcanos(Exercise):
     def the_solution(self):
         return ["60,60,100,100", "250,190,350,290"]
     
-#TODO replace png icons with svgs
 class GraphicOrderExampleBinaryTree(Exercise):
     '''
     Example of a Order Interaction
@@ -357,7 +347,6 @@ class GraphicAssociateExampleUK(Exercise):
             "height":25
         }
         
-        #TODO use id as well -> dict instead of list? 
         icon_coords = ["120,305", "200,130", "200,200", "300,350", "310,380", "355,410", "285,460", "230,440", "270,290"]
         
         graphic_ = GraphicInteraction(type='associate', background_src=background, icon_src=icon, all_coords=icon_coords)
@@ -370,7 +359,6 @@ class GraphicAssociateExampleUK(Exercise):
             graphic=graphic_
         )
     
-    #TODO verify solution by accepting pairs of coords -> pairs of id
     #either direction works
     def the_solution(self):
         return ["120,305,200,130", "310,380,355,410"]
@@ -394,7 +382,6 @@ class GraphicGapMatchExampleUK(Exercise):
             "height":25
         }
         
-        #TODO use id as well -> dict instead of list? 
         icon_coords = ["120,305", "200,130", "200,200", "300,350", "310,380", "355,410", "285,460", "230,440", "270,290"]
         
         graphic_ = GraphicInteraction(type='gap_match', background_src=background, icon_src=icon, all_coords=icon_coords)
@@ -425,7 +412,7 @@ class GraphicPositionObjectExampleAfricaVolcanos(Exercise):
         }
         
         icon = {
-            "src":'../tree/media/exclmark_icon.png',
+            "src":'../tree/media/exclamation-circle.svg',
             "width":22, 
             "height":22
         }

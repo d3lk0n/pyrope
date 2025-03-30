@@ -375,8 +375,6 @@ class ParametrizedExercise:
     @property
     def solution(self):
         # trigger solutions via getter
-        #TODO currently solutions are being fetched on init, 
-        # could be instantly used when clicking button
         self.the_solution
         self.a_solution
         return {
