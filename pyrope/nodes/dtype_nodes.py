@@ -393,7 +393,7 @@ class GraphicInteraction(Node):
                 (e.g. ["20,30","40,60","70,40"] - three icons that have to be activated in the order: (20,30), (40,60), (70,40)) 
             'associate': the coordinates of initialized icon pairs not in order
                 (e.g. ["20,30,40,60"] - a single icon pair (20,30) and (40,60) that has to be connected by the user - order is not relevant, adding reversed pairs of pairs that were already added results in unsolvable exercises) 
-            'select_point', 'position_object': coordinate pairs, that represent the upper-left and lower-right corners of an area in which one icon has to be placed
+            'select_point', 'position_object': coordinate pairs, that represent the upper-left and lower-right corners of an area in which one icon has to be placed, the center of the icon is used for validation
                 (e.g. ["100,100,200,200"] - a single area with upper left (100,100) and lower right (200,200) coordinates) 
         
         """

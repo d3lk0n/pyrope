@@ -261,7 +261,6 @@ class HotspotExamplePlants(Exercise):
     def the_solution(self):
         return ["230,360", "250,225", "335,425"]
 
-#TODO more fleshed out examples
 class SelectPointExampleAfricaVolcanos(Exercise):
     '''
     Example of a Select Point Interaction
@@ -308,11 +307,11 @@ class GraphicOrderExampleBinaryTree(Exercise):
         
         icon = {
             "src":'../tree/media/circle-fill_icon.svg',
-            "width":34, 
-            "height":34
+            "width":35, 
+            "height":35
         }
         
-        icon_coords=["383,27", "62,293", "223,116"]
+        icon_coords=["383,27", "60,292", "222,114", "113,202", "94,381", "327,202", "239,381", "598,202", "490,202", "60,292", "274,292", "526,292", "383,292", "455,292", "546,114"]
         
         graphic_ = GraphicInteraction(type='order', background_src=background, icon_src=icon, all_coords=icon_coords)
         return Problem(
@@ -325,7 +324,7 @@ class GraphicOrderExampleBinaryTree(Exercise):
         )
     
     def the_solution(self):
-        return ["383,27", "223,116", "62,293"]
+        return ["94,381", "60,292", "113,202", "222,114", "239,381", "274,292", "327,202", "383,292", "383,27", "455,292", "490,202", "526,292", "546,114", "598,202"]
 
 class GraphicAssociateExampleUK(Exercise):
     '''
