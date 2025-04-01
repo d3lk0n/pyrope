@@ -360,7 +360,6 @@ class List(Tuple):
 
     dtype = ListType
 
-#TODO add docs to specify which types
 class GraphicInteraction(Node):
     """
     A class that creates interactive graphical widgets in JavaScript.
@@ -376,8 +375,8 @@ class GraphicInteraction(Node):
         Parameters:
         - type (str): The type of graphical interaction. Must be one of:
             'hotspot', 'select_point', 'order', 'associate', 'gap_match', or 'position_object'.
-        - background_src (dictionary): The background source (path to an image, along with width and height properties) that will be used for the widget.
-        - icon_src (dictionary): The icon source (path to an image, along with width and height properties) that will be used for icon elements (that are either provided on init or created during the usage) for the widget. Not all icons need to be interacted with necessarily for calculating the solution. 
+        - background_src (dictionary): The background source (path to an image (local through jupyter or url), along with width and height properties) that will be used for the widget.
+        - icon_src (dictionary): The icon source (path to an image (local through jupyter or url), along with width and height properties) that will be used for icon elements (that are either provided on init or created during the usage) for the widget. Not all icons need to be interacted with necessarily for calculating the solution. 
         - all_coords (list, optional): A list of (x,y) coordinates to place initial icons, used for the following interaction types:
             'hotspot', 'order', 'associate' and 'gap_match'.
         - widget (optional): A pre-initialized widget (if provided, it is used instead of creating a new one).

@@ -282,7 +282,7 @@ class SelectPointExampleAfricaVolcanos(Exercise):
         graphic_ = GraphicInteraction(type='select_point', background_src=background, icon_src=icon)
         return Problem(
             '''
-            Select all regions in africa, in which active volacons reside.
+            Select all regions in africa, in which active volcanos reside.
             
             <<graphic>>
             ''',
@@ -417,7 +417,7 @@ class GraphicPositionObjectExampleAfricaVolcanos(Exercise):
         graphic_ = GraphicInteraction(type='position_object', background_src=background, icon_src=icon)
         return Problem(
             '''
-            Choose all regions that contain an active volacno in africa.
+            Choose all regions that contain an active volcano in africa.
             Position the object on the right correctly over the image.
             
             <<graphic>>
