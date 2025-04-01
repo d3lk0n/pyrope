@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import pyrope_ipywidgets
 
 
-from pyrope_ipywidgets.messages_pyrope import (
+from pyrope.messages import (
     ChangeWidgetAttribute, CreateWidget, ExerciseAttribute, RenderTemplate,
     WaitingForSubmission, WidgetValidationError
 )

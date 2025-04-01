@@ -3,8 +3,8 @@ from dataclasses import dataclass
 from typing import Any
 from uuid import UUID
 
-from pyrope_ipywidgets.formatters_pyrope import TemplateFormatter
-from pyrope_ipywidgets.messages_pyrope import (
+from pyrope.formatters import TemplateFormatter
+from pyrope.messages import (
     ChangeWidgetAttribute, CreateWidget, ExerciseAttribute, RenderTemplate,
     Submit, WaitingForSubmission, WidgetValidationError
 )

@@ -6,7 +6,7 @@ import numpy
 
 from pyrope.config import process_score
 from pyrope.errors import IllPosedError, ValidationError
-from pyrope_ipywidgets.messages_pyrope import ChangeWidgetAttribute
+from pyrope.messages import ChangeWidgetAttribute
 from pyrope.nodes.node import Node
 
 
