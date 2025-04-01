@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import pyrope_ipywidgets
 
 
-from pyrope.messages import (
+from pyrope_ipywidgets.messages_pyrope import (
     ChangeWidgetAttribute, CreateWidget, ExerciseAttribute, RenderTemplate,
     WaitingForSubmission, WidgetValidationError
 )
@@ -83,6 +83,12 @@ class JupyterWidgetFactory:
             'Checkbox': pyrope_ipywidgets.Checkbox,
             'Dropdown': pyrope_ipywidgets.Dropdown,
             'RadioButtons': pyrope_ipywidgets.RadioButtons,
+            'GraphicalHotspot': pyrope_ipywidgets.GraphicalHotspot,
+            'GraphicalSelectPoint': pyrope_ipywidgets.GraphicalSelectPoint,
+            'GraphicalOrder': pyrope_ipywidgets.GraphicalOrder,
+            'GraphicalAssociate': pyrope_ipywidgets.GraphicalAssociate,
+            'GraphicalGapMatch': pyrope_ipywidgets.GraphicalGapMatch,
+            'GraphicalPositionObject': pyrope_ipywidgets.GraphicalPositionObject,
             'Slider': pyrope_ipywidgets.Slider,
             'Text': pyrope_ipywidgets.Text,
             'TextArea': pyrope_ipywidgets.TextArea,

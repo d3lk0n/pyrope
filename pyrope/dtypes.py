@@ -1012,3 +1012,63 @@ class VectorType(MatrixType):
                     return 0.0
         else:
             return MatrixType.compare(self, LHS, RHS)
+
+class GraphicalInteractionType(DType):
+    
+    dtype = list
+    
+    def __init__(self, mode='set', **kwargs):
+        DType.__init__(self, **kwargs)
+        self.mode = mode
+
+    def trivial_value(self):
+        return []
+
+    def dummy_value(self):
+        return ["1,1"]
+
+    #left value, right solution
+    def compare(self, LHS:list[str], RHS:list[str]):
+        
+        match self.mode:
+            case 'set':
+                return set(LHS) == set(RHS)
+            case 'area':
+                #compare for equality to allow comparing value with itself
+                return (LHS == RHS) or (all(coords.count(',')==1 and area.count(',')==3 for coords in LHS for area in RHS) \
+                    and all(coords_in_any_area(coords, RHS) for coords in LHS) \
+                    and all(area_has_any_coords(LHS, sol) for sol in RHS))         
+            case 'list':
+                return LHS == RHS
+            case 'reversible_set':
+                return (LHS == RHS) or (all(combination_in_combinations(comb, RHS) for comb in LHS) \
+                    and all(combination_in_combinations(comb, LHS) for comb in RHS))
+            case _:
+                raise ValueError(
+                "'mode' must be any of 'set', 'area', 'list' or 'reversible_set'."
+            )
+
+    @property
+    def info(self):
+        return 'a graphical interaction'
+
+
+def coords_in_any_area(coords:str, areas:list[str]):
+    return any(coords_in_area(coords, area) for area in areas)
+
+def area_has_any_coords(all_coords:list[str], area:str):
+    return any(coords_in_area(coords, area) for coords in all_coords)
+            
+def coords_in_area(coords:str, area:str):
+    x, y = coords.split(',')
+    area_x1, area_y1, area_x2, area_y2 = area.split(',')
+    return int(x) > int(area_x1) and int(x) < int(area_x2) and int(y) > int(area_y1) and int(y) < int(area_y2)
+
+def combination_in_combinations(comb:str, combs:list[str]):
+    return any(combination_in_combination(comb, a_comb) for a_comb in combs)    
+
+def combination_in_combination(comb:str, s:str):
+    x1, y1, x2, y2 = comb.split(',')
+    s_x1, s_y1, s_x2, s_y2 = s.split(',')
+    a = (x1==s_x1 and y1==s_y1 and x2==s_x2 and y2==s_y2) or (x1==s_x2 and x2==s_x1 and y1==s_y2 and y2==s_y1)
+    return (x1==s_x1 and y1==s_y1 and x2==s_x2 and y2==s_y2) or (x1==s_x2 and x2==s_x1 and y1==s_y2 and y2==s_y1)

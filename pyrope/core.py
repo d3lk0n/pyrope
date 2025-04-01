@@ -27,7 +27,7 @@ from pyrope.database import (
     Exercise as DBExercise, Result, Session as DBSession, User
 )
 from pyrope.errors import IllPosedError
-from pyrope.messages import (
+from pyrope_ipywidgets.messages_pyrope import (
     ChangeWidgetAttribute, CreateWidget, ExerciseAttribute, RenderTemplate,
     Submit, WaitingForSubmission
 )

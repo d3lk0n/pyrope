@@ -6,7 +6,7 @@ import numpy
 
 from pyrope.config import process_score
 from pyrope.errors import IllPosedError, ValidationError
-from pyrope.messages import ChangeWidgetAttribute
+from pyrope_ipywidgets.messages_pyrope import ChangeWidgetAttribute
 from pyrope.nodes.node import Node
 
 
@@ -455,3 +455,77 @@ class TextArea(Text):
                 "'height' has to be an integer greater than or equal to 0."
             )
         self.height = height
+        
+class GraphicalHotspot(Widget):
+    
+    background_src = NotifyingAttribute()
+    icon_src = NotifyingAttribute()
+    all_coords = NotifyingAttribute()
+
+    def __init__(self, background_src, icon_src, all_coords=[], **kwargs):
+        Widget.__init__(self, **kwargs)
+    
+        self.background_src = background_src
+        self.icon_src = icon_src
+        self.all_coords = all_coords
+        
+class GraphicalSelectPoint(Widget):
+    
+    background_src = NotifyingAttribute()
+    icon_src = NotifyingAttribute()
+
+    def __init__(self, background_src, icon_src, **kwargs):
+        Widget.__init__(self, **kwargs)
+    
+        self.background_src = background_src
+        self.icon_src = icon_src
+
+class GraphicalOrder(Widget):
+    
+    background_src = NotifyingAttribute()
+    icon_src = NotifyingAttribute()
+    all_coords = NotifyingAttribute()
+    
+    def __init__(self, background_src, icon_src, all_coords=[], **kwargs):
+        Widget.__init__(self, **kwargs)
+    
+        self.background_src = background_src
+        self.icon_src = icon_src
+        self.all_coords = all_coords        
+        
+class GraphicalAssociate(Widget):
+    
+    background_src = NotifyingAttribute()
+    icon_src = NotifyingAttribute()
+    all_coords = NotifyingAttribute()
+
+    def __init__(self, background_src, icon_src, all_coords=[], **kwargs):
+        Widget.__init__(self, **kwargs)
+    
+        self.background_src = background_src
+        self.icon_src = icon_src
+        self.all_coords = all_coords
+
+class GraphicalGapMatch(Widget):
+    
+    background_src = NotifyingAttribute()
+    icon_src = NotifyingAttribute()
+    all_coords = NotifyingAttribute()
+    
+    def __init__(self, background_src, icon_src, all_coords=[], **kwargs):
+        Widget.__init__(self, **kwargs)
+    
+        self.background_src = background_src
+        self.icon_src = icon_src
+        self.all_coords = all_coords
+
+class GraphicalPositionObject(Widget):
+    
+    background_src = NotifyingAttribute()
+    icon_src = NotifyingAttribute()
+    
+    def __init__(self, background_src, icon_src, **kwargs):
+        Widget.__init__(self, **kwargs)
+    
+        self.background_src = background_src
+        self.icon_src = icon_src

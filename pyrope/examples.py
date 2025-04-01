@@ -5,7 +5,7 @@ import sympy
 
 from pyrope.core import Exercise
 from pyrope.nodes import (
-    Equation, Expression, Natural, Integer, Problem, Rational, Set
+    Equation, Expression, GraphicInteraction, Natural, Integer, Problem, Rational, Set
 )
 
 
@@ -244,3 +244,237 @@ class SquareRoot(Exercise):
             'The square root of <<radicand>> is <<root_>>.',
             root_=Natural()
         )
+
+class HotspotExampleUK(Exercise):
+    '''
+    Example of a Hotspot Interaction
+    '''
+
+    def problem(self):
+        background = {
+            "src":'../tree/media/uk_map.png',
+            "width":400, 
+            "height":600
+        }
+        
+        icon = {
+            "src":'../tree/media/plane_icon.svg', 
+            "width":25, 
+            "height":25
+        }
+        
+        icon_coords = ["120,305", "200,130", "200,200", "300,350", "310,380", "355,410", "285,460", "230,440", "270,290"]
+        
+        graphic_ = GraphicInteraction(type='hotspot', background_src=background, icon_src=icon, all_coords=icon_coords)
+        return Problem(
+            '''
+            Select all marked UK airports that have an average of 100+ outgoing flights per day.
+            
+            <<graphic>>
+            ''',
+            graphic=graphic_
+        )
+        
+    def the_solution(self):
+        return ["200,130", "200,200", "300,350"]
+    
+
+class HotspotExamplePlants(Exercise):
+    '''
+    Example of a Hotspot Interaction
+    '''
+
+    def problem(self):
+        background = {
+            "src":'../tree/media/plantcell_map.png',
+            "width":700, 
+            "height":700
+        }
+        
+        icon = {
+            "src":'../tree/media/exclamation-circle.svg', 
+            "width":25, 
+            "height":25
+        }
+        
+        icon_coords=["250,225", "365,210", "185,251", "335,425", "330,320", "230,360"]
+        
+        graphic_ = GraphicInteraction(type='hotspot', background_src=background, icon_src=icon, all_coords=icon_coords)
+        return Problem(
+            '''
+            Select all marked cell organelles that have a double membrane.
+            
+            <<graphic>>
+            ''',
+            graphic=graphic_
+        )
+        
+    def the_solution(self):
+        return ["230,360", "250,225", "335,425"]
+
+class SelectPointExampleAfricaVolcanos(Exercise):
+    '''
+    Example of a Select Point Interaction
+    '''
+
+    def problem(self):
+        background = {
+            "src":'../tree/media/africa_blank_map.png',
+            "width":585, 
+            "height":600
+        }
+        
+        icon = {
+            "src":'../tree/media/geo-alt-fill.svg', 
+            "width":20, 
+            "height":20
+        }
+        
+        graphic_ = GraphicInteraction(type='select_point', background_src=background, icon_src=icon)
+        return Problem(
+            '''
+            Select all regions in africa, in which active volcanos reside.
+            
+            <<graphic>>
+            ''',
+            graphic=graphic_
+        )
+    
+    def the_solution(self):
+        return ["60,60,100,100", "250,190,350,290"]
+    
+class GraphicOrderExampleBinaryTree(Exercise):
+    '''
+    Example of a Order Interaction
+    '''
+
+    def problem(self):
+        #img source https://mathcenter.oxford.emory.edu/site/cs171/binarySearchTrees/
+        background = {
+            "src":'../tree/media/binary_tree_map.png',
+            "width":657, 
+            "height":438
+        }
+        
+        icon = {
+            "src":'../tree/media/circle-fill_icon.svg',
+            "width":35, 
+            "height":35
+        }
+        
+        icon_coords=["383,27", "60,292", "222,114", "113,202", "94,381", "327,202", "239,381", "598,202", "490,202", "60,292", "274,292", "526,292", "383,292", "455,292", "546,114"]
+        
+        graphic_ = GraphicInteraction(type='order', background_src=background, icon_src=icon, all_coords=icon_coords)
+        return Problem(
+            '''
+            Flatten the binary tree into a linked list, choose the order of nodes within the resulting list.
+            
+            <<graphic>>
+            ''',
+            graphic=graphic_
+        )
+    
+    def the_solution(self):
+        return ["94,381", "60,292", "113,202", "222,114", "239,381", "274,292", "327,202", "383,292", "383,27", "455,292", "490,202", "526,292", "546,114", "598,202"]
+
+class GraphicAssociateExampleUK(Exercise):
+    '''
+    Example of a Associate Interaction
+    '''
+
+    def problem(self):
+        background = {
+            "src":'../tree/media/uk_map.png',
+            "width":400, 
+            "height":600
+        }
+        
+        icon = {
+            "src":'../tree/media/plane_icon.svg', 
+            "width":25, 
+            "height":25
+        }
+        
+        icon_coords = ["120,305", "200,130", "200,200", "300,350", "310,380", "355,410", "285,460", "230,440", "270,290"]
+        
+        graphic_ = GraphicInteraction(type='associate', background_src=background, icon_src=icon, all_coords=icon_coords)
+        return Problem(
+            '''
+            Mark all existing direct flight connections between uk airports.
+            
+            <<graphic>>
+            ''',
+            graphic=graphic_
+        )
+    
+    #either direction works
+    def the_solution(self):
+        return ["120,305,200,130", "310,380,355,410"]
+    
+
+class GraphicGapMatchExampleUK(Exercise):
+    '''
+    Example of a Gap Match Interaction
+    '''
+
+    def problem(self):
+        background = {
+            "src":'../tree/media/uk_map.png',
+            "width":400, 
+            "height":600
+        }
+        
+        icon = {
+            "src":'../tree/media/plane_icon.svg', 
+            "width":25, 
+            "height":25
+        }
+        
+        icon_coords = ["120,305", "200,130", "200,200", "300,350", "310,380", "355,410", "285,460", "230,440", "270,290"]
+        
+        graphic_ = GraphicInteraction(type='gap_match', background_src=background, icon_src=icon, all_coords=icon_coords)
+        return Problem(
+            '''
+            Select all UK airports that have an average of 100+ outgoing flights per day.
+            Fill the gaps by dragging the icon over the correct ones.
+            
+            <<graphic>>
+            ''',
+            graphic=graphic_
+        )
+    
+    def the_solution(self):
+        return ["200,200", "300,350", "310,380"]
+
+    
+class GraphicPositionObjectExampleAfricaVolcanos(Exercise):
+    '''
+    Example of a Position Object Interaction
+    '''
+
+    def problem(self):
+        background = {
+            "src":'../tree/media/africa_blank_map.png',
+            "width":400, 
+            "height":400
+        }
+        
+        icon = {
+            "src":'../tree/media/exclamation-circle.svg',
+            "width":22, 
+            "height":22
+        }
+        
+        graphic_ = GraphicInteraction(type='position_object', background_src=background, icon_src=icon)
+        return Problem(
+            '''
+            Choose all regions that contain an active volcano in africa.
+            Position the object on the right correctly over the image.
+            
+            <<graphic>>
+            ''',
+            graphic=graphic_
+        )
+    
+    def the_solution(self):
+        return ["60,60,70,70"]

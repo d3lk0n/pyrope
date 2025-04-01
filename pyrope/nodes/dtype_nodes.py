@@ -5,13 +5,13 @@ import sympy
 
 from pyrope import config
 from pyrope.dtypes import (
-    BooleanType, ComplexType, DictType, EquationType, ExpressionType, IntType,
+    BooleanType, ComplexType, DictType, EquationType, ExpressionType, IntType, GraphicalInteractionType,
     LinearExpressionType, ListType, MatrixType, OneOfType, PolynomialType,
     RationalType, RealType, SetType, StringType, TupleType, VectorType
 )
 from pyrope.errors import ValidationError
 from pyrope.nodes.node import Node
-from pyrope.nodes.widgets import Checkbox, Dropdown, RadioButtons, Slider, Text
+from pyrope.nodes.widgets import Checkbox, Dropdown, GraphicalHotspot, GraphicalSelectPoint, GraphicalOrder, GraphicalAssociate, GraphicalGapMatch, GraphicalPositionObject, RadioButtons, Slider, Text
 
 
 class Problem(Node):
@@ -363,3 +363,64 @@ class Tuple(Node):
 class List(Tuple):
 
     dtype = ListType
+
+class GraphicInteraction(Node):
+    """
+    A class that creates interactive graphical widgets in JavaScript.
+    It initializes different types of graphical interaction widgets based on the provided type.
+    """
+    
+    dtype = GraphicalInteractionType
+
+    def __init__(self, *, type, background_src, icon_src, all_coords = [], widget=None, **kwargs):
+        """
+        Initializes a graphical interaction widget.
+        
+        Parameters:
+        - type (str): The type of graphical interaction. Must be one of:
+            'hotspot', 'select_point', 'order', 'associate', 'gap_match', or 'position_object'.
+        - background_src (dictionary): The background source (path to an image (local through jupyter or url), along with width and height properties) that will be used for the widget.
+        - icon_src (dictionary): The icon source (path to an image (local through jupyter or url), along with width and height properties) that will be used for icon elements (that are either provided on init or created during the usage) for the widget. Not all icons need to be interacted with necessarily for calculating the solution. 
+        - all_coords (list, optional): A list of (x,y) coordinates to place initial icons, used for the following interaction types:
+            'hotspot', 'order', 'associate' and 'gap_match'.
+        - widget (optional): A pre-initialized widget (if provided, it is used instead of creating a new one).
+
+        Raises:
+        - ValueError: If an invalid `type` is provided.
+        
+        Validation:
+        - The solution to the widgets has to be provided in one of the following ways:
+            'hotspot', 'gap_match': the coordinates of initialized icons not in order
+                (e.g. ["20,30","40,60","70,40"] - three icons that have to be activated: (40,60), (20,30), (70,40) and (70,40), (40,60), (20,30) would be correct for instance) 
+            'order': the coordinates of initialized icons in order
+                (e.g. ["20,30","40,60","70,40"] - three icons that have to be activated in the order: (20,30), (40,60), (70,40)) 
+            'associate': the coordinates of initialized icon pairs not in order
+                (e.g. ["20,30,40,60"] - a single icon pair (20,30) and (40,60) that has to be connected by the user - order is not relevant, adding reversed pairs of pairs that were already added results in unsolvable exercises) 
+            'select_point', 'position_object': coordinate pairs, that represent the upper-left and lower-right corners of an area in which one icon has to be placed, the center of the icon is used for validation
+                (e.g. ["100,100,200,200"] - a single area with upper left (100,100) and lower right (200,200) coordinates) 
+        
+        """
+        
+        if widget is None:
+            match type:
+                case 'hotspot':
+                    self.dtype = self.dtype(mode='set', **kwargs)
+                    widget = GraphicalHotspot(background_src, icon_src, all_coords)
+                case 'select_point':
+                    self.dtype = self.dtype(mode='area', **kwargs)
+                    widget = GraphicalSelectPoint(background_src, icon_src)
+                case 'order':
+                    self.dtype = self.dtype(mode='list', **kwargs)
+                    widget = GraphicalOrder(background_src, icon_src, all_coords)
+                case 'associate':
+                    self.dtype = self.dtype(mode='reversible_set', **kwargs)
+                    widget = GraphicalAssociate(background_src, icon_src, all_coords)
+                case 'gap_match':
+                    self.dtype = self.dtype(mode='set', **kwargs)
+                    widget = GraphicalGapMatch(background_src, icon_src, all_coords)
+                case 'position_object':
+                    self.dtype = self.dtype(mode='area', **kwargs)
+                    widget = GraphicalPositionObject(background_src, icon_src)
+                case _ :
+                    raise ValueError("'type' has to be one of 'hotspot', 'select_point', 'order', 'associate', 'gap_match' or 'position_object'")
+        Node.__init__(self, '<<_>>', {'_': widget}, **kwargs)
